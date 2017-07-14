@@ -33,9 +33,10 @@ CREATE TABLE IF NOT EXISTS `cab_rental`.`cab` (
 
 CREATE TABLE IF NOT EXISTS `cab_rental`.`customer` (
   `cust_id` INT(10) UNSIGNED NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `age` INT(11) NOT NULL,
   `sex` VARCHAR(1) NOT NULL,
   `address` VARCHAR(255) NOT NULL,
-  `age` INT(11) NOT NULL,
   `mobile_no` VARCHAR(10) NULL DEFAULT NULL,
   `created_by` VARCHAR(55) NOT NULL,
   `create_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -64,3 +65,4 @@ CREATE TABLE IF NOT EXISTS `cab_rental`.`bookings` (
     FOREIGN KEY (`cust_id`)
     REFERENCES `cab_rental`.`customer` (`cust_id`)
     ON UPDATE CASCADE);
+

@@ -1,5 +1,5 @@
 DROP SCHEMA IF EXISTS `irctc`;
-CREATE SCHEMA `irctc`;
+CREATE SCHEMA `irctc` ;
 USE `irctc` ;
 
 CREATE TABLE IF NOT EXISTS `irctc`.`customer` (
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `irctc`.`ticket` (
   `modified_by` VARCHAR(55) NOT NULL,
   `modified_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `customer_cust_id` INT(10) UNSIGNED NOT NULL,
-  PRIMARY KEY (`ticket_no`, `customer_cust_id`),
+  PRIMARY KEY (`ticket_no`),
   INDEX `fk_ticket_customer1_idx` (`customer_cust_id` ASC),
   CONSTRAINT `fk_ticket_customer1`
     FOREIGN KEY (`customer_cust_id`)
@@ -63,6 +63,7 @@ CREATE TABLE IF NOT EXISTS `irctc`.`reserved_ticket` (
     REFERENCES `irctc`.`ticket` (`ticket_no`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE);
+
 
 CREATE TABLE IF NOT EXISTS `irctc`.`unreserved_ticket` (
   `created_by` VARCHAR(55) NOT NULL,
